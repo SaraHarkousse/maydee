@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-input/paper-button.html">
+
+<h1>{{title}}</h1>
+<h2>Login page </h2>
+
+<paper-input
+  id="mail"
+  label="mail"
+  name="mail"
+  type="email"
+  autofocus
+  required
+  value="{{ bdd.user.mail }}"
+  autocomplete
+  minlength="2"
+  pattern="^[\w._-]{2,100}@[\w\._-]{2,100}\.[a-z]{2,8}$"
+  error-message="Une adresse email valide"
+></paper-input>
+
+<paper-input
+  id="pass"
+  label="Password"
+  name="password"
+  type="password"
+  required
+  value="{{ password }}"
+  pattern="^.{6,50}$"
+  minlength="5"
+  error-message="5 - 50 characters"
+></paper-input>
+
+<paper-button raised on-tap="connect">Connection</paper-button>
+
+<div id="others">
+  <a on-click="inscription">Inscription</a> /
+  <a on-click="forgotten">Identifiants perdu ?</a>
+</div>
