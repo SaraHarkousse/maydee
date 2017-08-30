@@ -1,2 +1,9 @@
-<p>Welcome to the {{title}} app!</p>
-<my-app></my-app>
+{{#if user}}
+  <p>you are currently logged is as {{user.username}}</p>
+  <a href="/logout">Logout</a>
+  <!-- <my-app></my-app> -->
+{{else}}
+  <a href="/login">Login</a>
+  </br>
+  <a href="/register">Register</a>
+{{/if}}
