@@ -8,18 +8,18 @@ router.get('/', function(req, res) {
   if (req.user) {
     res.render('index', { user : req.user });
   } else {
-    res.redirect('/login');
+    res.redirect('/signin');
   }
 });
 
-router.get('/register', function(req, res) {
-    res.render('register', { });
+router.get('/signup', function(req, res) {
+    res.render('signup', { });
 });
 
-router.post('/register', function(req, res) {
-    Account.register(new Account({ username : req.body.username }), req.body.password, function(err, account) {
+router.post('/signup', function(req, res) {
+    Account.register(new Account({ email : req.body.email }), req.body.password, function(err, account) {
         if (err) {
-            return res.render('register', { account : account });
+            return res.render('signup', { account : account });
         }
 
         passport.authenticate('local')(req, res, function () {
@@ -28,11 +28,11 @@ router.post('/register', function(req, res) {
     });
 });
 
-router.get('/login', function(req, res) {
-    res.render('login', { user : req.user });
+router.get('/signin', function(req, res) {
+    res.render('signin', { user : req.user });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
+router.post('/signin', passport.authenticate('local'), function(req, res) {
     res.redirect('/');
 });
 
