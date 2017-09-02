@@ -1,0 +1,241 @@
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+
+
+<dom-module id="md-signin">
+
+  <template>
+
+    <style>
+      /* shadow DOM styles go here */
+      :host {
+        color: white;
+      }
+
+      :host .md-layout-signin {
+        background: linear-gradient(rgba(2, 45, 23, 0.45), rgba(9, 43, 24, 0.45)), url('../images/backgrounds/landscape4.jpg');
+        background-size:cover;
+        background-repeat:repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      :host .form-signin {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 40vh;
+        overflow: hidden;
+      }
+
+      :host .md-layout-signin .logo {
+        width: 100%;
+        height: auto;
+        margin-bottom: 2em;
+      }
+
+      :host iron-form {
+        width: 100%;
+        margin-top: 3em;
+      }
+
+      :host paper-input {
+        --paper-input-container-color: #EEEEEE;
+        --paper-input-container-focus-color: #339A99;
+        --paper-input-container-input-color: #EEEEEE;
+        --paper-input-container-invalid-color: red;
+        --paper-input-container-input-focus: rgb(176, 80, 89);
+        --paper-input-container-label-floating: {
+          font-size: 21px;
+        }
+        margin-bottom: 2em;
+      }
+
+      :host iron-form paper-button {
+        width: 100%;
+        background-color: #EEEEEE;
+        margin: 1em 0 0 0;
+        color: #339A99;
+        font-weight: bold;
+        border-radius: 100px;
+        text-transform: none;
+      }
+
+      :host a {
+        color: white;
+        text-decoration: none;
+      }
+
+      :host a:hover {
+        text-decoration: underline;
+      }
+
+      :host a.forgot-psw {
+        float: right;
+        margin-top: -2em;
+      }
+
+      :host .sign-up a {
+        font-weight: bold;
+      }
+
+      :host .sign-up {
+        margin-top: 4em;
+      }
+
+      :host .social-auth {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 2em 0;
+      }
+
+      :host .social-auth paper-button {
+        width: 40%;
+        background-color: #EEEEEE;
+        color: #EEEEEE;
+        font-weight: bold;
+        border-radius: 100px;
+        text-transform: none;
+        margin: 0.3em;
+        flex-grow: 1;
+      }
+
+      :host .social-auth paper-button.facebook {
+        background-color: #365899;
+      }
+
+      :host .social-auth paper-button.twitter {
+        background-color: #1DA1F2;
+      }
+
+      :host .social-auth paper-button.google {
+        background-color: #DC4A38;
+      }
+
+      :host .social-auth paper-button.linkedin {
+        background-color: #0077B5;
+      }
+
+      :host span.lineOnSides {
+        position: relative;
+        display: inline-block;
+        vertical-align: top;
+        padding: 0 6px;
+        letter-spacing: .42px;
+        text-transform: uppercase;
+        z-index: 802;
+      }
+
+      :host span.lineOnSides::before,
+            span.lineOnSides::after {
+              position: absolute;
+              content: "";
+              width: 240px;
+              height: 1px;
+              top: 50%;
+              background-color: #e6e8eb;
+      }
+
+      :host span.lineOnSides::before {
+        right: 100%;
+      }
+
+      :host span.lineOnSides::after {
+        left: 100%;
+      }
+
+      :host .social-auth iron-icon {
+        --iron-icon-fill-color: #EEEEEE;
+        fill: var(--icon-toggle-color, rgba(0,0,0,0));
+        margin-right: 1em;
+      }
+
+      :host .terms {
+        display: flex;
+        justify-content: space-around;
+        margin-top: 3em;
+        font-size: 0.8em;
+        width: 100%;
+      }
+
+      @media (min-height: 750px)
+    	{
+        :host .md-layout-signin {
+          height: 100vh;
+        }
+        :host .form-signin  {
+          /*width: 40vw;*/
+        }
+    	}
+
+    </style>
+
+    <!-- shadow DOM goes here -->
+    <div class="md-layout-signin">
+      <div class="form-signin">
+        <img src="images/logo/maydee-logo-586x150.png" width="586" height="150" alt="Maydée Logo" class="logo">
+
+        <span class="wrapper"><span class="lineOnSides">Connect With</span></span>
+        <div class="social-auth">
+          <paper-button class="facebook" raised on-click="submitForm">
+            <iron-icon src="images/icons/facebook.svg"></iron-icon>Facebook
+          </paper-button>
+          <paper-button class="google" raised on-click="submitForm">
+            <iron-icon src="images/icons/google-plus.svg"></iron-icon>Google
+          </paper-button>
+          <paper-button class="twitter" raised on-click="submitForm">
+            Twitter<!-- <iron-icon icon="favorite"></iron-icon>Twitter -->
+          </paper-button>
+          <paper-button class="linkedin" raised on-click="submitForm">
+            LinkedIn<!-- <iron-icon icon="favorite"></iron-icon>LinkedIn -->
+          </paper-button>
+        </div>
+        <span class="wrapper"><span class="lineOnSides">Or</span></span>
+
+        <iron-form id="ironform" allow-redirect="true">
+          <form action="/signin" method="post" >
+            <paper-input type="text" name="email" required label="Email"></paper-input>
+            <paper-input type="password" name="password" required label="Password"></paper-input>
+            <a href="#" class="forgot-psw">Forgot password?</a>
+            <paper-button raised on-click="submitForm">Sign In</paper-button>
+          </form>
+        </iron-form>
+
+        <div class="sign-up">
+          <span>Don't have an account? </span><a href="/signup">Sign Up</a>
+        </div>
+
+        <div class="terms">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Need Help?</a>
+        </div>
+      </div>
+    </div>
+
+  </template>
+
+  <script>
+    class MdSignIn extends Polymer.Element {
+      static get is() {
+        return 'md-signin';
+      }
+      constructor() {
+        super();
+      }
+      submitForm() {
+        // Polymer.dom(event).localTarget.parentElement.submit();
+        this.$.ironform.submit();
+      }
+    }
+
+    customElements.define(MdSignIn.is, MdSignIn);
+  </script>
+
+</dom-module>
