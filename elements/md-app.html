@@ -1,0 +1,86 @@
+<link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="shared-styles.html">
+
+
+<dom-module id="md-app">
+
+  <template>
+    <style include="shared-styles">
+      :host .md-layout-signin {
+        background: linear-gradient(rgba(2, 45, 23, 0.45), rgba(9, 43, 24, 0.45)), url('../images/backgrounds/landscape2.jpg');
+        background-size:cover;
+        background-repeat:repeat;        
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: stretch;
+        height: 100vh;
+      }
+
+      :host paper-toolbar {
+        --paper-toolbar-background: #A9D2A8;
+        opacity: 0.4;
+      }
+    </style>
+
+    <!-- shadow DOM goes here -->
+
+    <div class="md-layout-signin">
+      <paper-toolbar id="footer">
+  			<paper-icon-button
+  				id="logger"
+  				onclick="page.show('/chronometre')"
+  				icon="image:timer"
+  				toggles
+  			></paper-icon-button>
+  			<span class="flex"></span>
+  			<paper-icon-button
+  				id="grapher"
+  				onclick="page.show('/graph')"
+  				icon="icons:timeline"
+  				toggles
+  			></paper-icon-button>
+  		</paper-toolbar>
+      <paper-toolbar id="footer">
+  			<paper-icon-button
+  				id="logger"
+  				onclick="page.show('/chronometre')"
+  				icon="image:timer"
+  				toggles
+  			></paper-icon-button>
+  			<span class="flex"></span>
+  			<paper-icon-button
+  				id="grapher"
+  				onclick="page.show('/graph')"
+  				icon="icons:timeline"
+  				toggles
+  			></paper-icon-button>
+  		</paper-toolbar>
+      <!-- <p>you are currently logged in as [[user]]</p>
+      <a href="/logout">Logout</a> -->
+    </div>
+
+  </template>
+
+  <script>
+    class MdApp extends Polymer.Element {
+      static get is() {
+        return 'md-app';
+      }
+      constructor() {
+        super();
+      }
+      static get properties() {
+        return {
+          user: String
+        };
+      }
+    }
+
+    customElements.define(MdApp.is, MdApp);
+  </script>
+
+</dom-module>
