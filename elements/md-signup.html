@@ -4,108 +4,55 @@
 <link rel="import" href="../bower_components/iron-form/iron-form.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
+<link rel="import" href="shared-styles.html">
 
 
 <dom-module id="md-signup">
 
   <template>
-
-    <style>
-      /* shadow DOM styles go here */
-      :host {
-        color: white;
-      }
-
-      :host .md-layout-signin {
-        height: 100vh;
-        background: linear-gradient(rgba(2, 45, 23, 0.45), rgba(9, 43, 24, 0.45)), url('../images/backgrounds/landscape4.jpg');
-        background-size:cover;
-        background-repeat:repeat;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-      }
-
-      :host .md-layout-signin .logo {
-        width: 35vh;
-        height: auto;
-        margin-bottom: 4em;
-      }
-
-      :host iron-form {
-        width: 35vh;
-      }
-
-      :host paper-input {
-        --paper-input-container-color: #EEEEEE;
-        --paper-input-container-focus-color: #339A99;
-        --paper-input-container-input-color: #EEEEEE;
-        --paper-input-container-invalid-color: red;
-        --paper-input-container-input-focus: rgb(176, 80, 89);
-        --paper-input-container-label-floating: {
-          font-size: 21px;
-        }
-        margin-bottom: 2em;
-      }
-
-      :host iron-icon {
-        --iron-icon-fill-color: rgb(44, 141, 152);
-        --iron-icon-stroke-color: rgb(187, 187, 77);
-      }
-
-      :host paper-button {
-        width: 35vh;
-        background-color: #EEEEEE;
-        margin: 3em 0 0 0;
-        color: #339A99;
-        font-weight: bold;
-        border-radius: 100px;
-        text-transform: none;
-      }
-
-      :host h3 {
-        display: none;
-      }
-
-      :host a {
-        color: white;
-        text-decoration: none;
-      }
-
-      :host a:hover {
-        text-decoration: underline;
-      }
-
-      :host a.forgot-psw {
-        float: right;
-        margin-top: -2em;
-      }
-
-      :host .sign-up a {
-        font-weight: bold;
-      }
-
-      :host .sign-up {
-        margin-top: 4em;
-      }
-
+    <style include="shared-styles">
     </style>
 
     <!-- shadow DOM goes here -->
     <div class="md-layout-signin">
-      <img src="images/logo/maydee-logo-586x150.png" width="586" height="150" alt="Maydée Logo" class="logo">
-      <h3>Welcome !</h3>
-      <iron-form id="ironform" allow-redirect="true">
-        <form action="/signin" method="post" >
-          <paper-input type="text" name="email" required label="Email"></paper-input>
-          <paper-input type="password" name="password" required label="Password"></paper-input>
-          <paper-button raised on-click="submitForm">Sign Up</paper-button>
-        </form>
-      </iron-form>
-      <!-- <div class="sign-up">
-        <span>I have an account? </span><a href="/signin">Sign In</a>
-      </div> -->
+      <div class="form-signin">
+        <img src="images/logo/maydee-logo-586x150.png" width="586" height="150" alt="Maydée Logo" class="logo">
+
+        <span class="wrapper"><span class="lineOnSides">Connect With</span></span>
+        <div class="social-auth">
+          <paper-button class="facebook" raised on-click="submitForm">
+            <iron-icon src="images/icons/facebook.svg"></iron-icon>Facebook
+          </paper-button>
+          <paper-button class="google" raised on-click="submitForm">
+            <iron-icon src="images/icons/google-plus.svg"></iron-icon>Google
+          </paper-button>
+          <paper-button class="twitter" raised on-click="submitForm">
+            Twitter<!-- <iron-icon icon="favorite"></iron-icon>Twitter -->
+          </paper-button>
+          <paper-button class="linkedin" raised on-click="submitForm">
+            LinkedIn<!-- <iron-icon icon="favorite"></iron-icon>LinkedIn -->
+          </paper-button>
+        </div>
+        <span class="wrapper"><span class="lineOnSides">Or</span></span>
+
+        <iron-form id="ironform" allow-redirect="true">
+          <form action="/signup" method="post" >
+            <paper-input type="text" name="email" required label="Email"></paper-input>
+            <paper-input type="text" name="username" required label="Username"></paper-input>
+            <paper-input type="password" name="password" required label="Password"></paper-input>
+            <paper-button raised on-click="submitForm">Sign Up</paper-button>
+          </form>
+        </iron-form>
+
+        <div class="sign-up">
+          <span>I have an account </span><a href="/signin">Sign In</a>
+        </div>
+
+        <div class="terms">
+          <a href="#">Terms & Conditions</a>
+          <a href="#">Need Help?</a>
+        </div>
+      </div>
     </div>
 
   </template>
