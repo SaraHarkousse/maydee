@@ -2,9 +2,10 @@
  * Module dependencies.
  */
 
-const mongoose = require('mongoose')
-const User = require('./user.model').User
-const Boom = require('boom')
+const mongoose = require('mongoose');
+const passport = require('passport');
+const User = require('./user.model').User;
+const Boom = require('boom');
 
 
 /**
@@ -12,18 +13,40 @@ const Boom = require('boom')
  */
 
 exports.create = function (req, res) {
-  User.create(req.body, function (err, result) {
-    if (err) {
-      if(err.code === 11000){
-        return res.json({data: "email already exist"});
+  // confirm that user typed same password twice
+  if (req.body.password !== req.body.passwordConf) {
+    var err = new Error('Passwords do not match.');
+    err.status = 400;
+    err = "passwords don't match";
+    res.render('error', { error : err});
+    return next(err);
+  }
+
+  if ( req.body.email &&
+    req.body.username &&
+    req.body.password &&
+    req.body.passwordConf) {
+
+      var userData = {
+        email: req.body.email,
+        username: req.body.username,
+        password: req.body.password
       }
-      return res.send(Boom.badImplementation(err));
+
+      User.create(userData, function (err, user) {
+        if (err) {
+          if(err.code === 11000){
+            return res.json({data: "email already exist"});
+          }
+          return res.send(Boom.badImplementation(err));
+        } else {
+          passport.authenticate('local')(req, res, function () {
+            res.redirect('/');
+          });
+        }
+      });
     }
-    return res.json(result);
-  });
 };
-
-
 
 /**
  * Show login form
@@ -37,7 +60,8 @@ exports.login = function (req, res) {
         return res.json({status:"Invalid Username and Password"});
     }
     else{
-      return res.json(req.user);
+      //return res.json(req.user);
+      res.redirect('/');
     }
 };
 
