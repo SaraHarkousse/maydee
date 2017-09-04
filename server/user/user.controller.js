@@ -47,7 +47,17 @@ exports.login = function (req, res) {
 
 exports.logout = function (req, res) {
   req.logout();
-  return res.json(req.user);
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function(err) {
+      if(err) {
+        return next(err);
+      } else {
+        return res.redirect('/');
+      }
+    });
+  }
+  //return res.json(req.user);
 };
 
 /** authentication check. */
