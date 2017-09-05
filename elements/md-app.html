@@ -1,4 +1,7 @@
 <link rel="import" href="../bower_components/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/av-icons.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
@@ -12,7 +15,7 @@
       :host .md-layout-signin {
         background: linear-gradient(rgba(2, 45, 23, 0.45), rgba(9, 43, 24, 0.45)), url('../images/backgrounds/landscape2.jpg');
         background-size:cover;
-        background-repeat:repeat;        
+        background-repeat:repeat;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -22,41 +25,52 @@
 
       :host paper-toolbar {
         --paper-toolbar-background: #A9D2A8;
-        opacity: 0.4;
+        display: flex;
+        justify-content: space-between;
+        /*opacity: 0.4;*/
+      }
+
+      :host paper-icon-button {
+        width: 60px;
+        height: 60px;
       }
     </style>
 
     <!-- shadow DOM goes here -->
 
     <div class="md-layout-signin">
+      <paper-toolbar id="mainToolbar">
+        <!-- <a target="_blank" href="/maydee/info/index.php"> -->
+          <!-- <iron-icon icon="av:library-books"></iron-icon> -->
+        <!-- </a> -->
+        <paper-icon-button
+          id="logger"
+          onclick="page.show('/account')"
+          icon="av:library-books"
+          toggles slot="top"
+        ></paper-icon-button>
+        <span class="flex"></span>
+        <paper-icon-button
+          id="logger"
+          onclick="page.show('/account')"
+          icon="icons:account-circle"
+          toggles slot="top"
+        ></paper-icon-button>
+      </paper-toolbar>
       <paper-toolbar id="footer">
   			<paper-icon-button
   				id="logger"
   				onclick="page.show('/chronometre')"
   				icon="image:timer"
   				toggles
+  				  slot="top"
   			></paper-icon-button>
   			<span class="flex"></span>
   			<paper-icon-button
   				id="grapher"
   				onclick="page.show('/graph')"
   				icon="icons:timeline"
-  				toggles
-  			></paper-icon-button>
-  		</paper-toolbar>
-      <paper-toolbar id="footer">
-  			<paper-icon-button
-  				id="logger"
-  				onclick="page.show('/chronometre')"
-  				icon="image:timer"
-  				toggles
-  			></paper-icon-button>
-  			<span class="flex"></span>
-  			<paper-icon-button
-  				id="grapher"
-  				onclick="page.show('/graph')"
-  				icon="icons:timeline"
-  				toggles
+  				toggles slot="top"
   			></paper-icon-button>
   		</paper-toolbar>
       <!-- <p>you are currently logged in as [[user]]</p>
