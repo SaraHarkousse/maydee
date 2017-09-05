@@ -1,6 +1,8 @@
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icons/image-icons.html">
 <link rel="import" href="../bower_components/iron-form/iron-form.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
@@ -37,8 +39,13 @@
 
         <iron-form id="ironform" allow-redirect="true">
           <form action="/signin" method="post" >
-            <paper-input type="text" name="email" required label="Email"></paper-input>
-            <paper-input type="password" name="password" required label="Password"></paper-input>
+            <paper-input type="text" name="email" required label="Email">
+              <iron-icon icon="mail" slot="prefix"></iron-icon>
+            </paper-input>
+            <paper-input type="password" name="password" required label="Password">
+              <iron-icon icon="lock" slot="prefix"></iron-icon>
+              <iron-icon icon="image:remove-red-eye" slot="suffix"></iron-icon>
+            </paper-input>
             <a href="#" class="forgot-psw">Forgot password?</a>
             <paper-button raised on-click="submitForm">Sign In</paper-button>
           </form>
