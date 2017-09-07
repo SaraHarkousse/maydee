@@ -13,7 +13,7 @@
   <template>
     <style include="shared-styles">
       :host .md-layout-signin {
-        background: linear-gradient(rgba(2, 45, 23, 0.45), rgba(9, 43, 24, 0.45)), url('../images/backgrounds/landscape2.jpg');
+        background: url('../images/backgrounds/landscape3.jpg');
         background-size:cover;
         background-repeat:repeat;
         display: flex;
@@ -24,15 +24,21 @@
       }
 
       :host paper-toolbar {
-        --paper-toolbar-background: #A9D2A8;
-        display: flex;
-        justify-content: space-between;
-        /*opacity: 0.4;*/
+        --paper-toolbar-background: rgba(168, 209, 167, 0.5);
+        --paper-toolbar-content: {
+          display: flex;
+          justify-content: space-between;
+          opacity: 1;
+        }
       }
 
       :host paper-icon-button {
         width: 60px;
         height: 60px;
+      }
+
+      :host .task-layout {
+        flex-grow: 1;
       }
     </style>
 
@@ -57,6 +63,28 @@
           toggles slot="top"
         ></paper-icon-button>
       </paper-toolbar>
+
+      <div class="task-layout">
+        <paper-icon-button
+          id="logger"
+          onclick="page.show('/account')"
+          icon="icons:account-circle"
+          toggles slot="top"
+        ></paper-icon-button>
+        <paper-icon-button
+          id="logger"
+          onclick="page.show('/account')"
+          icon="icons:account-circle"
+          toggles slot="top"
+        ></paper-icon-button>
+        <paper-icon-button
+          id="logger"
+          onclick="page.show('/account')"
+          icon="icons:account-circle"
+          toggles slot="top"
+        ></paper-icon-button>
+      </div>
+
       <paper-toolbar id="footer">
   			<paper-icon-button
   				id="logger"
