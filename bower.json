@@ -20,7 +20,8 @@
     "paper-button": "PolymerElements/paper-button#^2.0.0",
     "iron-form": "^2.0.0",
     "iron-icon": "^2.0.1",
-    "paper-toolbar": "^2.0.0"
+    "paper-toolbar": "^2.0.0",
+    "paper-fab": "^2.0.0"
   },
   "resolutions": {
     "polymer": "^2.0.0"

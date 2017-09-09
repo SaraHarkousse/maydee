@@ -2,7 +2,12 @@
 <link rel="import" href="../bower_components/iron-icons/image-icons.html">
 <link rel="import" href="../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../bower_components/iron-icons/av-icons.html">
+<link rel="import" href="../bower_components/iron-icons/places-icons.html">
+<link rel="import" href="../bower_components/iron-icons/social-icons.html">
+<link rel="import" href="../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../bower_components/iron-icons/editor-icons.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="shared-styles.html">
@@ -13,7 +18,7 @@
   <template>
     <style include="shared-styles">
       :host .md-layout-signin {
-        background: url('../images/backgrounds/landscape3.jpg');
+        background: url('../images/backgrounds/landscape5.webp');
         background-size:cover;
         background-repeat:repeat;
         display: flex;
@@ -37,72 +42,161 @@
         height: 60px;
       }
 
+      :host paper-icon-button.home {
+        width: 92px;
+        height: 92px;
+        margin-left: -1em;
+      }
+
       :host .task-layout {
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        align-items:  center;
       }
+
+      :host .tasks-header{
+        height: 6em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 85vw;
+      }
+
+      :host .tasks-header .title{
+        border: solid 0.1em white;
+        padding: 0.7em;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 100px;
+        width: 100%;
+        text-align: center;
+        font-size: larger;
+      }
+
+      :host .tasks {
+        width: 85vw;
+        display: flex;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        align-content: flex-start;
+      }
+
+      :host .tasks .task{
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 35px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 7em;
+        margin: 0.5em 0.2em;
+        height: 5em;
+        font-weight: bold;
+      }
+
+      :host .add-task{
+        width: 85vw;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        height: 6em;
+      }
+
+      :host .add-task paper-fab{
+        --paper-fab-background: rgba(255, 255, 255, 0.3);
+        border: solid 0.1em white;
+        margin-right: 0.5em;
+      }
+
     </style>
 
     <!-- shadow DOM goes here -->
 
     <div class="md-layout-signin">
-      <paper-toolbar id="mainToolbar">
-        <!-- <a target="_blank" href="/maydee/info/index.php"> -->
-          <!-- <iron-icon icon="av:library-books"></iron-icon> -->
-        <!-- </a> -->
-        <paper-icon-button
-          id="logger"
-          onclick="page.show('/account')"
-          icon="av:library-books"
-          toggles slot="top"
-        ></paper-icon-button>
-        <span class="flex"></span>
-        <paper-icon-button
-          id="logger"
-          onclick="page.show('/account')"
-          icon="icons:account-circle"
-          toggles slot="top"
-        ></paper-icon-button>
+      <paper-toolbar>
+        <paper-icon-button title="Home" on-click="page.show('/account')" src="images/logo/maydee_logo.png" toggles slot="top" class="home"></paper-icon-button>
+        <paper-icon-button title="Account" on-click="page.show('/account')" icon="icons:account-circle" toggles slot="top"></paper-icon-button>
       </paper-toolbar>
 
       <div class="task-layout">
-        <paper-icon-button
-          id="logger"
-          onclick="page.show('/account')"
-          icon="icons:account-circle"
-          toggles slot="top"
-        ></paper-icon-button>
-        <paper-icon-button
-          id="logger"
-          onclick="page.show('/account')"
-          icon="icons:account-circle"
-          toggles slot="top"
-        ></paper-icon-button>
-        <paper-icon-button
-          id="logger"
-          onclick="page.show('/account')"
-          icon="icons:account-circle"
-          toggles slot="top"
-        ></paper-icon-button>
+        <div class="tasks-header">
+          <div class="title">Edit your activities</div>
+        </div>
+        <div class="tasks">
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/baby.svg" toggles></paper-icon-button>
+            <span>Child Care</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="icons:shopping-cart" toggles></paper-icon-button>
+            <span>Shopping</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="maps:local-laundry-service" toggles></paper-icon-button>
+            <span>Laundry</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/cleaning.svg" toggles></paper-icon-button>
+            <span>Cleaning</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/cooking.svg" toggles></paper-icon-button>
+            <span>Cooking</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/wash.svg" toggles></paper-icon-button>
+            <span>Dish wash</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="places:pool" toggles></paper-icon-button>
+            <span>Pool</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="social:school" toggles></paper-icon-button>
+            <span>School</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/man-with-stroller.svg" toggles></paper-icon-button>
+            <span>Walk</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/student.svg" toggles></paper-icon-button>
+            <span>studying</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/helping-children.svg" toggles></paper-icon-button>
+            <span>Homework</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="social:domain" toggles></paper-icon-button>
+            <span>Work</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="maps:local-library" toggles></paper-icon-button>
+            <span>Reading</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" icon="editor:format-paint" toggles></paper-icon-button>
+            <span>DIY</span>
+          </div>
+          <div class="task">
+            <paper-icon-button title="Home" on-click="page.show('/account')" src="images/icons/tasks/car-wash.svg" toggles></paper-icon-button>
+            <span>Car wash</span>
+          </div>
+        </div>
+        <div class="add-task">
+          <paper-fab icon="add"></paper-fab>
+        </div>
       </div>
 
-      <paper-toolbar id="footer">
-  			<paper-icon-button
-  				id="logger"
-  				onclick="page.show('/chronometre')"
-  				icon="image:timer"
-  				toggles
-  				  slot="top"
-  			></paper-icon-button>
-  			<span class="flex"></span>
-  			<paper-icon-button
-  				id="grapher"
-  				onclick="page.show('/graph')"
-  				icon="icons:timeline"
-  				toggles slot="top"
-  			></paper-icon-button>
+      <paper-toolbar>
+  			<paper-icon-button title="Timer" on-click="page.show('/chronometre')" icon="image:timer" toggles slot="top"></paper-icon-button>
+  			<paper-icon-button title="Graphic" on-click="page.show('/graph')" src="images/icons/toolbar/pie-chart.svg" toggles slot="top"></paper-icon-button>
   		</paper-toolbar>
+
       <!-- <p>you are currently logged in as [[user]]</p>
       <a href="/logout">Logout</a> -->
+      <!-- <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div> -->
     </div>
 
   </template>
