@@ -20,7 +20,10 @@
       <div class="form-signin">
         <img src="images/logo/maydee-logo-586x150.png" width="586" height="150" alt="Maydée Logo" class="logo">
 
-        <span class="wrapper"><span class="lineOnSides">Connect With</span></span>
+        <div class="separator">
+          <span class="wrapper"><span class="lineOnSides">Connect With</span></span>
+        </div>
+
         <div class="social-auth">
           <paper-button class="facebook" raised on-click="submitForm">
             <iron-icon src="images/icons/social/facebook.svg"></iron-icon>Facebook
@@ -35,7 +38,10 @@
             <iron-icon src="images/icons/social/linkedin.svg"></iron-icon>LinkedIn
           </paper-button>
         </div>
-        <span class="wrapper"><span class="lineOnSides">Or</span></span>
+
+        <div class="separator">
+          <span class="wrapper"><span class="lineOnSides">Or</span></span>
+        </div>
 
         <iron-form id="ironform" allow-redirect="true">
           <form action="/signup" method="post" >

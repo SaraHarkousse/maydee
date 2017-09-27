@@ -19,8 +19,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         color: white;
       }
 
+      :host .separator {
+        width: 100%;
+        overflow: hidden;
+        text-align: center;
+      }
+
       :host .md-layout-signin {
-        background: linear-gradient(rgba(2, 45, 23, 0.45), rgba(9, 43, 24, 0.45)), url('../images/backgrounds/landscape4.webp');
+        background: url('../images/backgrounds/landscape2.webp');
         background-size:cover;
         background-repeat:repeat;
         display: flex;
@@ -34,8 +40,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        width: 40vh;
-        overflow: hidden;
+        width: 22em;
+        padding: 2em;
+        background: rgba(0,0,0,0.4);
       }
 
       :host .md-layout-signin .logo {

@@ -20,7 +20,10 @@
       <div class="form-signin">
         <img src="images/logo/maydee-logo-586x150.png" width="586" height="150" alt="Maydée Logo" class="logo">
 
-        <span class="wrapper"><span class="lineOnSides">Connect With</span></span>
+        <div class="separator">
+          <span class="wrapper"><span class="lineOnSides">Connexion</span></span>
+        </div>
+
         <div class="social-auth">
           <paper-button class="facebook" raised on-click="submitForm">
             <iron-icon src="images/icons/social/facebook.svg"></iron-icon>Facebook
@@ -35,29 +38,32 @@
             <iron-icon src="images/icons/social/linkedin.svg"></iron-icon>LinkedIn
           </paper-button>
         </div>
-        <span class="wrapper"><span class="lineOnSides">Or</span></span>
+
+        <div class="separator">
+          <span class="wrapper"><span class="lineOnSides">OU</span></span>
+        </div>
 
         <iron-form id="ironform" allow-redirect="true">
           <form action="/signin" method="post" >
             <paper-input type="text" name="email" required label="Email">
               <iron-icon icon="mail" slot="prefix"></iron-icon>
             </paper-input>
-            <paper-input type="password" name="password" required label="Password">
+            <paper-input type="password" name="password" required label="Mot de passe">
               <iron-icon icon="lock" slot="prefix"></iron-icon>
               <iron-icon icon="image:remove-red-eye" slot="suffix"></iron-icon>
             </paper-input>
-            <a href="#" class="forgot-psw">Forgot password?</a>
-            <paper-button raised on-click="submitForm">Sign In</paper-button>
+            <a href="#" class="forgot-psw">Mot de passe oublié ?</a>
+            <paper-button raised on-click="submitForm">Se connecter</paper-button>
           </form>
         </iron-form>
 
         <div class="sign-up">
-          <span>Don't have an account? </span><a href="/signup">Sign Up</a>
+          <span>Pas encore de compte ? </span><a href="/signup">Inscription</a>
         </div>
 
         <div class="terms">
-          <a href="#">Terms & Conditions</a>
-          <a href="#">Need Help?</a>
+          <a href="#">Termes & Conditions</a>
+          <a href="#">Besoin d'aide ?</a>
         </div>
       </div>
     </div>
